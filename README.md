@@ -9,7 +9,7 @@ A basic CRUD Java application using the DataStax Java Driver for Apache Cassandr
 ## Create the keyspace and table
 The `resources/users.cql` file provides the schema used for this project:
 
-```
+```sql
 CREATE KEYSPACE demo
     WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'};
 
@@ -27,7 +27,7 @@ All of our code is contained in the `GettingStarted` class.
 Note how the main method creates a session to connect to our cluster and runs the CRUD operations against it. 
 Replace the default parameters in `CqlSession.builder()` with your own hostname, port and datacenter.
 
-```
+```java
 CqlSession session = CqlSession.builder()
                 .addContactPoint(new InetSocketAddress("127.0.0.1", 9042))
                 .withKeyspace("demo")
@@ -39,7 +39,7 @@ CqlSession session = CqlSession.builder()
 Fill the code in the methods that will add a user, get a user, update a user and delete a user from the table with the driver.
 
 ### INSERT a user
-```
+```java
 public static void setUser(CqlSession session, String lastname, int age, String city, String email, String firstname) {
 
         session.execute("INSERT INTO users (lastname, age, city, email, firstname) VALUES " +
@@ -49,7 +49,7 @@ public static void setUser(CqlSession session, String lastname, int age, String 
 ```
 
 ### SELECT a user
-```
+```java
 public static void getUser(CqlSession session, String lastname) {
 
         ResultSet rs = session.execute("SELECT * FROM users WHERE lastname='" +lastname + "'");
@@ -60,7 +60,7 @@ public static void getUser(CqlSession session, String lastname) {
 ```
 
 ### UPDATE a user's age
-```
+```java
 public static void updateUser(CqlSession session, int age, String lastname) {
 
         session.execute("UPDATE users SET age =" +age+  " WHERE lastname = '" +lastname+ "'");
@@ -68,7 +68,7 @@ public static void updateUser(CqlSession session, int age, String lastname) {
 ```   
 
 ### DELETE a user
-```
+```java
 public static void deleteUser(CqlSession session, String lastname) {
 
         session.execute("DELETE FROM users WHERE lastname = '"+lastname+"'");
