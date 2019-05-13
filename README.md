@@ -5,6 +5,7 @@ A basic CRUD Java application using the DataStax Java Driver for Apache Cassandr
 ## Prerequisites
   * A running instance of [Apache Cassandra®](http://cassandra.apache.org/download/) 2.1+
   * [Maven](https://maven.apache.org/download.cgi) build automation tool
+  * Java 8
   
 ## Create the keyspace and table
 The `resources/users.cql` file provides the schema used for this project:
