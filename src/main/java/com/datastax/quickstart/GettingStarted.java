@@ -8,6 +8,7 @@ public class GettingStarted {
 
     public static void main(String[] args) {
 
+        // TO DO: Fill in address, data center
         CqlSession session = CqlSession.builder()
                 .addContactPoint(new InetSocketAddress("127.0.0.1", 9042))
                 .withKeyspace("demo")
