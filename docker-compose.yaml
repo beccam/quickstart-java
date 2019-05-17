@@ -1,0 +1,23 @@
+version: '2'
+services:
+  dse:
+    image: datastax/dse-server:6.7.0
+    command: [ -s -g ]
+    ports:
+    - "9042:9042"
+    environment:
+      DS_LICENSE: accept
+    cap_add:
+    - IPC_LOCK
+    ulimits:
+      memlock: -1
+
+  studio:
+    image: datastax/dse-studio:6.7.0
+    ports:
+    - "9091:9091"
+    depends_on:
+    - dse
+    environment:
+      DS_LICENSE: accept
+      

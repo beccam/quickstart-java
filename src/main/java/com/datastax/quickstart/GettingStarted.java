@@ -1,8 +1,8 @@
 package com.datastax.quickstart;
 
-import com.datastax.oss.driver.api.core.CqlSession;
-import com.datastax.oss.driver.api.core.cql.*;
 import java.net.InetSocketAddress;
+
+import com.datastax.oss.driver.api.core.CqlSession;
 
 public class GettingStarted {
 

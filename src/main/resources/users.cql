@@ -7,3 +7,5 @@ CREATE TABLE demo.users (
     city text,
     email text,
     firstname text);
+    
+    
