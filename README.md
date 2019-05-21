@@ -41,39 +41,57 @@ Fill the code in the methods that will add a user, get a user, update a user and
 
 ### INSERT a user
 ```java
-public static void setUser(CqlSession session, String lastname, int age, String city, String email, String firstname) {
-
-        session.execute("INSERT INTO users (lastname, age, city, email, firstname) VALUES " +
-                " ('" +lastname+ "'," +age+ ", '"+city+"', '" +email+ "', '" +firstname+ "')");
-    }
+private static void setUser(CqlSession session, String lastname, int age, String city, String email, String firstname) {
+    
+    //TO DO: execute SimpleStatement that inserts one user into the table
+    session.execute(
+            SimpleStatement.builder( "INSERT INTO users (lastname, age, city, email, firstname) VALUES (?,?,?,?,?)")
+            .addPositionalValues(lastname, age, city, email, firstname)
+            .build());
+}
 
 ```
 
 ### SELECT a user
 ```java
-public static void getUser(CqlSession session, String lastname) {
+private static void getUser(CqlSession session, String lastname) {
 
-        ResultSet rs = session.execute("SELECT * FROM users WHERE lastname='" +lastname + "'");
-        Row row = rs.one();
-        System.out.format("%s %d\n", row.getString("firstname"), row.getInt("age"));
-    }
 
+    //TO DO: execute SimpleStatement that retrieves one user from the table
+    //TO DO: print firstname and age of user
+    ResultSet rs = session.execute(
+    SimpleStatement.builder("SELECT * FROM users WHERE lastname=?")
+            .addPositionalValue(lastname)
+            .build());
+
+    Row row = rs.one();
+    System.out.format("%s %d\n", row.getString("firstname"), row.getInt("age"));
+}
 ```
 
 ### UPDATE a user's age
 ```java
-public static void updateUser(CqlSession session, int age, String lastname) {
+private static void updateUser(CqlSession session, int age, String lastname) {
 
-        session.execute("UPDATE users SET age =" +age+  " WHERE lastname = '" +lastname+ "'");
-    }
+    //TO DO: execute SimpleStatement that updates the age of one user
+    session.execute(
+            SimpleStatement.builder("UPDATE users SET age =?  WHERE lastname =? ")
+            .addPositionalValues(age, lastname)
+            .build());
+}
 ```   
 
 ### DELETE a user
 ```java
-public static void deleteUser(CqlSession session, String lastname) {
+private static void deleteUser(CqlSession session, String lastname) {
 
-        session.execute("DELETE FROM users WHERE lastname = '"+lastname+"'");
-    }
+   //TO DO: execute SimpleStatement that deletes one user from the table
+    session.execute(
+            SimpleStatement.builder("DELETE FROM users WHERE lastname=?")
+                    .addPositionalValue(lastname)
+                    .build());
+
+}
 ```
     
 
