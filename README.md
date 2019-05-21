@@ -30,11 +30,11 @@ Replace the default parameters in `CqlSession.builder()` with your own hostname,
 
 ```java
 // TO DO: Fill in your own host, port, and data center
-CqlSession session = CqlSession.builder()
+try (CqlSession session = CqlSession.builder()
                 .addContactPoint(new InetSocketAddress("127.0.0.1", 9042))
                 .withKeyspace("demo")
                 .withLocalDatacenter("datacenter1")
-                .build();
+                .build()) 
 ```
 
 ## CRUD Operations
@@ -56,7 +56,6 @@ private static void setUser(CqlSession session, String lastname, int age, String
 ### SELECT a user
 ```java
 private static void getUser(CqlSession session, String lastname) {
-
 
     //TO DO: execute SimpleStatement that retrieves one user from the table
     //TO DO: print firstname and age of user
