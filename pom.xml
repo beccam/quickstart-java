@@ -8,9 +8,11 @@
 	<version>1.0-SNAPSHOT</version>
 	
 	<properties>
+		<encoding>UTF-8</encoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>11</java.version>
+		<version.jdk>11</version.jdk>
+		<version.maven.plugin.compiler>3.8.0</version.maven.plugin.compiler>
 		<oss-java-driver.version>4.0.1</oss-java-driver.version>
 	</properties>
 	
@@ -33,14 +35,18 @@
 	</dependencies>
 	
 	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<release>${java.version}</release>
-				</configuration>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${version.maven.plugin.compiler}</version>
+					<configuration>
+						<release>${version.jdk}</release>
+					</configuration>
+				</plugin>
+				</plugins>
+		</pluginManagement>
 	</build>
 
 </project>
