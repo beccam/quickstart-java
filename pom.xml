@@ -30,6 +30,11 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+           <plugin>
+                <groupId>com.github.johnpoth</groupId>
+                <artifactId>jshell-maven-plugin</artifactId>
+                <version>1.3</version>
+           </plugin>
         </plugins>
     </build>
 
